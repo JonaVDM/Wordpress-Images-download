@@ -21,10 +21,14 @@ yearFolderHtml = urllib.request.urlopen(website + uploadFolder).read()
 years = re.findall(folderRegex, str(yearFolderHtml))
 
 folder = Path('output')
+if folder.exists() and folder.is_file():
+    folder.unlink()
 if not folder.exists():
     folder.mkdir()
 
 folder = Path(output)
+if folder.exists() and folder.is_file():
+    folder.unlink()
 if not folder.is_dir():
     folder.mkdir()
 
